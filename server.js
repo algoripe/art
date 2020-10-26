@@ -4,5 +4,5 @@ const server = express();
 
 const PORT = 3000;
 
-const server = http.createServer(server);
+http.createServer(server);
 server.listen(PORT);
