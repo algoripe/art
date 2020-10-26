@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Rokkitt:wght@600&family=Ubuntu+Mono&display=swap');
+
+* {
+  font-family: 'Ubuntu Mono', monospace;
+}
+
+body {
+  background-color: #000000;
+  color: #FFF5EB;
+  padding: 10px;
+}
+
+h1 {
+  font-family: 'Rokkitt', serif;
+}
+
+#palettes h2 {
+  font-family: 'Rokkitt', serif;
+  margin: 0px 5px;
+}
+
+button{
+  background: rgb(192,74,188);
+  background: linear-gradient(34deg, rgba(192,74,188,1) 0%, rgba(208,119,138,1) 100%);
+  color: #FFF5EB;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 25px;
+  border-width: 0px;
+  width: 10rem;
+}
+
+button:hover {
+  transform: scale(1.1);
+}
+
+#toolkit {
+  font-family: 'Ubuntu Mono', monospace;
+  text-align: center;
+  border-radius: 15px;
+  padding: 20px;
+}
+
+.loop-on {
+  background: rgb(65,157,120);
+  background: linear-gradient(134deg, rgba(65,157,120,1) 0%, rgba(64,112,110,1) 100%);
+}
+
+.loop-off {
+  background: rgb(224,164,88);
+  background: linear-gradient(134deg, rgba(224,164,88,1) 0%, rgba(208,119,138,1) 100%);
+}
+
+#color-btn {
+  background: rgb(65,157,120);
+  background: linear-gradient(90deg, rgba(65,157,120,1) 0%, rgba(224,164,88,1) 50%, rgba(192,74,188,1) 100%);
+}
+
+#main-header {
+  text-align: center;
+}
+
+#canvas-div {
+  text-align: center;
+}
+
+#palettes {
+  display: none;
+}
+
+.palette:hover {
+  transform: scale(1.01);
+}
