@@ -2,12 +2,11 @@ const http = require('http');
 const express = require('express');
 const path = require('path');
 
-
 const server = express();
 const port = process.env.PORT || 3000;
 http.createServer(server);
 server.listen(port);
-console.log(`Server running on port ${port}...\n> http://localhost:${port}\nPress "CTRL" + "C" to stop the server`);
+console.log(`Server running on port ${port}\n> http://localhost:${port}\n> Press "CTRL" + "C" to stop the server`);
 
 // SHOULD BE ANOTHER FILE
 const router = express.Router();
