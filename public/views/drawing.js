@@ -1,9 +1,12 @@
 console.log('Sketch was loaded...');
 
+let width = 12000;
+let height = width;
+
 let backgroundClr;
 let strokeClr;
 
-let strokeWeightValue = 0.2;
+let strokeWeightValue = 2;
 const strokeWeightMax = 500;
 
 const frameRateValue = 30;
@@ -18,8 +21,10 @@ function preload() {
 
 function setup() {
 
-  canvas = createCanvas(660, 660);
+  canvas = createCanvas(width, height);
   canvas.parent("canvas-div");
+
+  noiseSeed(1998);
 
   // COLORS
   backgroundClr = pickColorFromPalette(0);
@@ -45,14 +50,14 @@ function setup() {
 
 function draw() {
   
-  const x1 = width * 0.5;
-  const y1 = height * 0.5;
+  const x1 = width * (t);
+  const y1 = height * 0;
   
   const x2 = width * noise(t + 235);
   const y2 = height * noise(t + 165);
   
-  const y3 = height * 2 * noise(t + 175);
-  const x3 = width * 2 * noise(t + 265);
+  const y3 = height * noise(t + 175);
+  const x3 = width * noise(t + 265);
   
   const y4 = height * noise(t + 185);
   const x4 = width * noise(t + 295);
@@ -68,7 +73,7 @@ function draw() {
   
   bezier(x1, y1, x2, y2, x3, y3, x4, y4);
   
-  bezier(x1, y1, x7, y7, x4, y4, x1, y1);
+  // bezier(x1, y1, x7, y7, x4, y4, x1, y1);
   
   // bezier(x4, y4, x2, y2, x3, y3, x6, y6);
   
