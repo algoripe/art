@@ -197,11 +197,3 @@ function draw() {
   // adjustStrokeColor();
   // stroke(strokeClr);
 }
-
-function adjustStrokeColor() {
-  if(frameCount % 2 == 0) {
-    strokeClr = pickColorFromPalette(2);
-  } else {
-    strokeClr = pickColorFromPalette(2);
-  }
-}

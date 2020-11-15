@@ -37,7 +37,9 @@ const colorPalettes = [
             1: '#2B9AE0',
             2: '#E03636',
             3: '#E08709',
-            4: '#14E04E'
+            4: '#14E04E',
+            5: '#FFFFFF',
+            6: '#000000'
             }
         }
     },
@@ -56,7 +58,9 @@ const colorPalettes = [
             0: '#101010',
             1: '#530B0E',
             2: '#EB3939',
-            3: '#FCEEEE'
+            3: '#FCEEEE',
+            4: '#FFFFFF',
+            5: '#000000'
             }
         }
     },
@@ -89,7 +93,9 @@ const colorPalettes = [
             1: '#419D78',
             2: '#E0A458',
             3: '#FFDBB5',
-            4: '#C04ABC'
+            4: '#C04ABC',
+            5: '#FFFFFF',
+            6: '#000000'
             }
         }
     },
@@ -122,7 +128,7 @@ const colorPalettes = [
 ];
 
 // DEFAULT PALETTE
-let currentPaletteIndex = 1;
+let currentPaletteIndex = 7;
 
 let currentPalette = colorPalettes[currentPaletteIndex].palette.colors;
 
@@ -307,6 +313,37 @@ function updateChosenPalette(event) {
             console.log(`Selected new palette: ${id}`);
             console.log(currentPalette);
         }
+    }
+}
+
+function adjustStrokeColor() {
+    if(frameCount % 2 == 0) {
+      strokeClr = pickColorFromPalette(2);
+    } else {
+      strokeClr = pickColorFromPalette(2);
+    }
+}
+
+function setGradient(x, y, w, h, c1, c2, axis) {
+
+    noFill();
+  
+    if (axis === 'vertical') {
+      // Top to bottom gradient
+      for (let i = y; i <= y + h; i++) {
+        let inter = map(i, y, y + h, 0, 1);
+        let c = lerpColor(c1, c2, inter);
+        stroke(c);
+        line(x, i, x + w, i);
+      }
+    } else if (axis === 'horizontal') {
+      // Left to right gradient
+      for (let i = x; i <= x + w; i++) {
+        let inter = map(i, x, x + w, 0, 1);
+        let c = lerpColor(c1, c2, inter);
+        stroke(c);
+        line(i, y, i, y + h);
+      }
     }
 }
 

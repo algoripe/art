@@ -1,59 +1,97 @@
-@import url('https://fonts.googleapis.com/css2?family=Rokkitt:wght@600&family=Ubuntu+Mono&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Rokkitt:wght@600&family=Ubuntu+Mono&display=swap");
+
+:root {
+  --white: #fff5eb;
+}
 
 * {
-  font-family: 'Ubuntu Mono', monospace;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
 }
 
 body {
+  font-size: 1.6rem;
+  font-family: "Ubuntu Mono", monospace;
   background-color: #000000;
-  color: #FFF5EB;
-  padding: 10px;
+  color: var(--white);
+  padding: 1rem;
 }
 
 h1 {
-  font-family: 'Rokkitt', serif;
+  font-family: "Rokkitt", serif;
 }
 
 #palettes h2 {
-  font-family: 'Rokkitt', serif;
+  font-family: "Rokkitt", serif;
   margin: 0px 5px;
 }
 
-button{
-  background: rgb(192,74,188);
-  background: linear-gradient(34deg, rgba(192,74,188,1) 0%, rgba(208,119,138,1) 100%);
-  color: #FFF5EB;
-  padding: 10px;
-  margin: 10px;
-  border-radius: 25px;
+button {
+  background: rgb(192, 74, 188);
+  background: linear-gradient(
+    34deg,
+    rgba(192, 74, 188, 1) 0%,
+    rgba(208, 119, 138, 1) 100%
+  );
+  color: #fff5eb;
+  /* display: inline-block; */
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: 3rem;
   border-width: 0px;
-  width: 10rem;
+  font-size: 1.8rem;
+  font-family: inherit;
+  flex: 1;
 }
 
 button:hover {
-  transform: scale(1.1);
+  transform: translateY(-3px);
+  transition: all .1s;
 }
 
 #toolkit {
-  font-family: 'Ubuntu Mono', monospace;
+  font-family: "Ubuntu Mono", monospace;
   text-align: center;
   border-radius: 15px;
   padding: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 .loop-on {
-  background: rgb(65,157,120);
-  background: linear-gradient(134deg, rgba(65,157,120,1) 0%, rgba(64,112,110,1) 100%);
+  background: rgb(65, 157, 120);
+  background: linear-gradient(
+    134deg,
+    rgba(65, 157, 120, 1) 0%,
+    rgba(64, 112, 110, 1) 100%
+  );
 }
 
 .loop-off {
-  background: rgb(224,164,88);
-  background: linear-gradient(134deg, rgba(224,164,88,1) 0%, rgba(208,119,138,1) 100%);
+  background: rgb(224, 164, 88);
+  background: linear-gradient(
+    134deg,
+    rgba(224, 164, 88, 1) 0%,
+    rgba(208, 119, 138, 1) 100%
+  );
 }
 
 #color-btn {
-  background: rgb(65,157,120);
-  background: linear-gradient(90deg, rgba(65,157,120,1) 0%, rgba(224,164,88,1) 50%, rgba(192,74,188,1) 100%);
+  background: rgb(65, 157, 120);
+  background: linear-gradient(
+    90deg,
+    rgba(65, 157, 120, 1) 0%,
+    rgba(224, 164, 88, 1) 50%,
+    rgba(192, 74, 188, 1) 100%
+  );
 }
 
 #main-header {
@@ -65,7 +103,16 @@ button:hover {
 }
 
 #palettes {
+  background: black;
   display: none;
+  z-index = 100;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 25%;
+  height: 100%;
+  display: flex;
+  overflow: scroll;
 }
 
 .palette:hover {
