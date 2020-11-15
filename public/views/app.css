@@ -2,6 +2,7 @@
 
 :root {
   --white: #fff5eb;
+  --black: #131313;
 }
 
 * {
@@ -51,18 +52,18 @@ button {
 
 button:hover {
   transform: translateY(-3px);
-  transition: all .1s;
+  transition: all 0.1s;
 }
 
 #toolkit {
   font-family: "Ubuntu Mono", monospace;
   text-align: center;
   border-radius: 15px;
-  padding: 20px;
+  padding: 2rem;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  max-width: 1000px;
+  max-width: 100rem;
   margin: 0 auto;
 }
 
@@ -103,10 +104,10 @@ button:hover {
 }
 
 #palettes {
-  background: black;
+  background: var(--black);
   display: none;
-  z-index = 100;
-  position: absolute;
+  z-index: 100;
+  position: fixed;
   top: 0;
   left: 0;
   width: 25%;
