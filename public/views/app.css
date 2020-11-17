@@ -65,6 +65,7 @@ button:hover {
   justify-content: center;
   max-width: 100rem;
   margin: 0 auto;
+  z-index: 100;
 }
 
 .loop-on {
@@ -100,7 +101,11 @@ button:hover {
 }
 
 #canvas-div {
-  text-align: center;
+  padding: 3rem;
+  border-radius: 1rem;
+  background-color: rgba(200, 200, 200, 0.2);
+  width: fit-content;
+  cursor: crosshair;
 }
 
 #palettes {

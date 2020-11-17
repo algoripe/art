@@ -138,7 +138,7 @@ const colorPalettes = [
 ];
 
 // DEFAULT PALETTE
-let currentPaletteIndex = 0;
+let currentPaletteIndex = 5;
 
 let currentPalette = colorPalettes[currentPaletteIndex].palette.colors;
 
@@ -168,6 +168,7 @@ function pickColorFromPalette(index) {
     console.log(
       `Color is undefined. You are currently using this palette:\n${currentPalette}`
     );
+    throw `color undefined`;
     return "#FF55FF";
   } else {
     return color;
@@ -361,6 +362,10 @@ function setGradient(x, y, w, h, c1, c2, axis) {
       line(i, y, i, y + h);
     }
   }
+}
+
+function windowResized() {
+  resizeCanvas(width, height);
 }
 
 // PALETTE SELECTOR SETUP
