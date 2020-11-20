@@ -106,6 +106,7 @@ button:hover {
   background-color: rgba(200, 200, 200, 0.2);
   width: fit-content;
   cursor: crosshair;
+  /* cursor: none; */
 }
 
 #palettes {
@@ -123,4 +124,8 @@ button:hover {
 
 .palette:hover {
   transform: scale(1.01);
+}
+
+.cursor-none {
+  cursor: none;
 }
