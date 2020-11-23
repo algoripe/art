@@ -16,14 +16,14 @@ let t = 0;
 let SLOW_INCREMENT = 0;
 
 // particle system
-const NUMBER_OF_AUTOMATAS = 10;
+const NUMBER_OF_AUTOMATAS = 40;
 // const PARTICLE_JOIN_DISTANCE = noise(t + 300) * 50 + 40;
 // const PARTICLE_JOIN_DISTANCE = 20 + width / NUMBER_OF_AUTOMATAS;
 let DEFAULT_PARTICLE_JOIN_DISTANCE = 40;
 
 // TYPOGRAPHY
 let displayText;
-const frameCountPerLetter = 25;
+const frameCountPerLetter = 40;
 
 const letterLines = {
   A: [
@@ -41,7 +41,7 @@ const letterLines = {
     [0.2, 0.8, 0.7, 0.8],
     [0.7, 0.8, 0.8, 0.7],
     [0.8, 0.7, 0.8, 0.6],
-    [0.8, 0.6, 0.7, 0.5],
+    [0.8, 0.6, 0.6, 0.5],
   ],
   C: [
     [0.8, 0.4, 0.5, 0.2],
@@ -49,6 +49,11 @@ const letterLines = {
     [0.2, 0.6, 0.2, 0.4],
     [0.2, 0.6, 0.5, 0.8],
     [0.5, 0.8, 0.8, 0.6],
+  ],
+  D: [
+    [0.2, 0.2, 0.2, 0.8],
+    [0.2, 0.2, 0.8, 0.5],
+    [0.2, 0.8, 0.8, 0.5],
   ],
   E: [
     [0.2, 0.2, 0.8, 0.2],
@@ -81,6 +86,13 @@ const letterLines = {
     [0.5, 0.2, 0.5, 0.8],
     [0.3, 0.8, 0.7, 0.8],
   ],
+  J: [
+    [0.2, 0.2, 0.8, 0.2],
+    [0.5, 0.2, 0.5, 0.7],
+    [0.5, 0.7, 0.4, 0.8],
+    [0.4, 0.8, 0.2, 0.8],
+    [0.2, 0.8, 0.2, 0.7],
+  ],
   K: [
     [0.2, 0.2, 0.2, 0.8],
     [0.2, 0.5, 0.8, 0.2],
@@ -89,6 +101,12 @@ const letterLines = {
   L: [
     [0.2, 0.2, 0.2, 0.8],
     [0.8, 0.8, 0.2, 0.8],
+  ],
+  M: [
+    [0.2, 0.8, 0.2, 0.2],
+    [0.2, 0.2, 0.5, 0.5],
+    [0.5, 0.5, 0.8, 0.2],
+    [0.8, 0.2, 0.8, 0.8],
   ],
   N: [
     [0.2, 0.2, 0.2, 0.8],
@@ -110,6 +128,13 @@ const letterLines = {
     [0.8, 0.4, 0.6, 0.5],
     [0.6, 0.5, 0.3, 0.5],
   ],
+  Q: [
+    [0.2, 0.5, 0.5, 0.2],
+    [0.5, 0.2, 0.8, 0.5],
+    [0.8, 0.5, 0.5, 0.8],
+    [0.5, 0.8, 0.2, 0.5],
+    [0.5, 0.5, 0.8, 0.8],
+  ],
   R: [
     [0.2, 0.2, 0.2, 0.8],
     [0.2, 0.2, 0.6, 0.2],
@@ -120,14 +145,45 @@ const letterLines = {
     [0.6, 0.5, 0.3, 0.5],
     [0.8, 0.8, 0.4, 0.5],
   ],
+  S: [
+    [0.8, 0.4, 0.5, 0.2],
+    [0.5, 0.2, 0.2, 0.3],
+    [0.2, 0.3, 0.8, 0.7],
+    [0.8, 0.7, 0.5, 0.8],
+    [0.5, 0.8, 0.2, 0.6],
+  ],
   T: [
     [0.2, 0.2, 0.8, 0.2],
     [0.5, 0.2, 0.5, 0.8],
+  ],
+  U: [
+    [0.2, 0.2, 0.2, 0.8],
+    [0.2, 0.8, 0.8, 0.8],
+    [0.8, 0.8, 0.8, 0.2],
+  ],
+  V: [
+    [0.2, 0.2, 0.5, 0.8],
+    [0.5, 0.8, 0.8, 0.2],
+  ],
+  W: [
+    [0.2, 0.2, 0.4, 0.8],
+    [0.4, 0.8, 0.5, 0.5],
+    [0.5, 0.5, 0.6, 0.8],
+    [0.6, 0.8, 0.8, 0.2],
+  ],
+  X: [
+    [0.2, 0.2, 0.8, 0.8],
+    [0.8, 0.2, 0.2, 0.8],
   ],
   Y: [
     [0.2, 0.2, 0.5, 0.5],
     [0.8, 0.2, 0.5, 0.5],
     [0.5, 0.8, 0.5, 0.5],
+  ],
+  Z: [
+    [0.2, 0.2, 0.8, 0.2],
+    [0.8, 0.2, 0.2, 0.8],
+    [0.2, 0.8, 0.8, 0.8],
   ],
 };
 const automatas = [];
@@ -219,9 +275,9 @@ class Automata {
   move = () => {
     if (this.xDirection === 0 && this.yDirection === 0) {
       this.xPosition =
-        this.xPosition + cos(SLOW_INCREMENT * TWO_PI + this.uniqueNumber) / 20;
+        this.xPosition + cos(SLOW_INCREMENT * TWO_PI + this.uniqueNumber) / 1;
       this.yPosition =
-        this.yPosition + sin(SLOW_INCREMENT * TWO_PI + this.uniqueNumber) / 20;
+        this.yPosition + sin(SLOW_INCREMENT * TWO_PI + this.uniqueNumber) / 2;
     } else {
       this.xPosition += this.xDirection;
       this.yPosition += this.yDirection;
@@ -243,7 +299,7 @@ class Automata {
 
   draw = () => {
     stroke("#000");
-    strokeWeight(0.7);
+    strokeWeight(1.2);
     // point(this.xPosition, this.yPosition);
     // stroke(this.color);
 
@@ -441,7 +497,7 @@ function setup() {
     automatas[i].draw();
   }
 
-  displayText = "ABCEFGHIKLNOPRTY";
+  displayText = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 }
 
 function draw() {
@@ -450,9 +506,9 @@ function draw() {
   for (let i = 0; i < automatas.length; i++) {
     const automata = automatas[i];
 
-    // automata.draw();
     automata.move();
     automata.joinParticles(i);
+    automata.draw();
     // automata.draw();
   }
 
@@ -463,68 +519,69 @@ function draw() {
   t += 0.15;
   SLOW_INCREMENT += 0.005;
 
-  if (frameCount === 1) {
-    const ltrA = new LineLetter(letterLines.A, width / 4, height / 2, 0, 0);
-    const ltrL = new LineLetter(
+  if (
+    frameCount === 1 ||
+    frameCount === frameCountPerLetter * displayText.length + 20
+  ) {
+    removeLetterPoints();
+    const ltr1 = new LineLetter(letterLines.A, width / 4, height / 2, 0, 0);
+    const ltr2 = new LineLetter(
       letterLines.L,
       width / 4,
       height / 2,
       width / 4,
       0
     );
-    const ltrG = new LineLetter(
+    const ltr3 = new LineLetter(
       letterLines.G,
       width / 4,
       height / 2,
       width / 2,
       0
     );
-    const ltrO = new LineLetter(
+    const ltr4 = new LineLetter(
       letterLines.O,
       width / 4,
       height / 2,
       (3 * width) / 4,
       0
     );
-    const ltrF = new LineLetter(
+    const ltr5 = new LineLetter(
       letterLines.F,
       width / 4,
       height / 2,
       0,
       height / 2
     );
-    const ltrO1 = new LineLetter(
+    const ltr6 = new LineLetter(
       letterLines.O,
       width / 4,
       height / 2,
       width / 4,
       height / 2
     );
-    const ltrN = new LineLetter(
+    const ltr7 = new LineLetter(
       letterLines.N,
       width / 4,
       height / 2,
       width / 2,
       height / 2
     );
-    const ltrT = new LineLetter(
+    const ltr8 = new LineLetter(
       letterLines.T,
       width / 4,
       height / 2,
       (3 * width) / 4,
       height / 2
     );
+    automatas.splice(0, 1);
   } else if (
-    frameCount > 100 &&
-    frameCount < frameCountPerLetter * displayText.length + 100
+    frameCount > 20 &&
+    frameCount < frameCountPerLetter * displayText.length + 20
   ) {
-    oneByOneLetters(displayText.split(""), frameCountPerLetter, 101);
+    oneByOneLetters(displayText.split(""), frameCountPerLetter, 21);
+    attractToMouse();
   }
-
-  // if (mouseX > 0 && mouseX < width && mouseY > 0 && mouseY < height) {
-  //   automatas[0].xPosition = mouseX;
-  //   automatas[0].yPosition = mouseY;
-  // }
 }
 
 // FUNCTIONS
@@ -582,5 +639,14 @@ const oneByOneLetters = (lettersArray, framesPerLetter, frameToStartOn) => {
       stringToLetters(lettersArray[i]);
       console.log(i, framesPerLetter * i + 1, lettersArray[i]);
     }
+  }
+};
+
+const attractToMouse = () => {
+  if (mouseX > 0 && mouseX < width && mouseY > 0 && mouseY < height) {
+    automatas[0].size = 0;
+    automatas[0].joinDistance = 150;
+    automatas[0].xPosition = mouseX;
+    automatas[0].yPosition = mouseY;
   }
 };
